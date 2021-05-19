@@ -1,0 +1,25 @@
+{
+  "name": "minifier",
+  "version": "1.0.0",
+  "author": {
+    "email": "brinkman-ws@sfu.ca",
+    "name": "Fiona Brinkman Laboratory",
+    "url": "https://github.com/brinkmanlab/minifier"
+  },
+  "license": "MIT",
+  "main": "./index.js",
+  "scripts": {
+    "preserve": "npm run build",
+    "serve": "cloudflare-worker-local dist/index.js localhost:8080 4000",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "@i2labs/dns": "^1.0.0",
+    "abortcontroller-polyfill": "^1.7.3"
+  },
+  "devDependencies": {
+    "cloudflare-worker-local": "^1.13.0",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
+  }
+}
