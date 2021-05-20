@@ -1,8 +1,8 @@
 import 'abortcontroller-polyfill/dist/polyfill-patch-fetch'
 import 'dns';
 const dns = globalThis["@i2labs/dns"];
-const rootDomain = "goto.brinkmanlab.ca"
-const statusCode = 301
+const rootDomain = "goto.brinkmanlab.ca";
+const statusCode = 301;
 
 if (Response.redirect === undefined) {
     // Support running in nodejs
@@ -29,7 +29,7 @@ async function handleRequest(request) {
         records = await dns.promises.resolve(url.hostname, 'URI');
     }
     if (records.length === 0) {
-        return new Response(NotFound, {
+        return new Response(NotFound(hostname), {
             headers: {"content-type": "text/html;charset=UTF-8",},
             status: 404,
             statusText: "Not Found"
@@ -49,7 +49,8 @@ addEventListener("fetch", async event => {
 })
 
 
-const NotFound = `<html>
+function NotFound(hostname) {
+    return `<html>
 <head><title>Brinkman Lab - 404 Not Found</title></head>
 <body>
 <header>
@@ -57,13 +58,14 @@ const NotFound = `<html>
     <h2>404 Not Found</h2>
 </header>
 <main>
-  The requested resource was not found. If you believe this to be an error, please contact us at <a href="mailto:brinkman-ws@sfu.ca">brinkman-ws@sfu.ca</a>.
+  The requested resource (${hostname}) was not found. If you believe this to be an error, please contact us at <a href="mailto:brinkman-ws@sfu.ca">brinkman-ws@sfu.ca</a>.
 </main>
 <footer style="margin-top: 5em">
   <a href="https://brinkmanlab.ca/">Fiona Brinkman Laboratory</a> - Simon Fraser University
 </footer>
 </body>
 </html>`
+}
 
 const Info = `<html>
 <head><title>Brinkman Lab Minifier Service</title></head>
