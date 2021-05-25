@@ -76,7 +76,7 @@ const Info = `<html>
 <main>
   <p>Welcome to the Fiona Brinkman Laboratory URL minifier service. If you were looking for the lab website, it is hosted at <a href="https://brinkmanlab.ca/">https://brinkmanlab.ca</a></p>
   <p>This service provides long lived urls to our various resources. They are intended to be used in publications or anywhere where we need to guarantee the link will remain active independent of any underlying resource.</p>
-  <p>Staff can add new URLs to the brinkmanlab_ca zone in the <a href="https://github.com/brinkmanlab/brinkman_cloud/">brinkman_cloud repository</a> (access restricted).</p>
+  <p>Staff can add new URLs in the <a href="https://github.com/brinkmanlab/brinkman_cloud/blob/brinkmanlab_ca/goto.tf">brinkman_cloud repository</a> (access restricted).</p>
 </main>
 <footer style="margin-top: 5em">
     <p>
