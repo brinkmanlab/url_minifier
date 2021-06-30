@@ -13,7 +13,6 @@ if (Response.redirect === undefined) {
 
 async function handleRequest(request) {
     const url = new URL(request.url);
-    url.hostname = rootDomain;
     const path = url.pathname.split('/').filter(p => p).reverse().map(p => p.replace(/[^\w-]/g, '-').replace(/^-|-$/g, ''));
     const hostname = [...path, url.hostname].join('.');
     console.log(`${hostname} ${request.referrer}`);
