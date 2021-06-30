@@ -36,11 +36,11 @@ async function handleRequest(request) {
     }
     let result = records[0];
     for (const record of records) {
-        if (result.priority < record.priority || (result.priority === record.priority && result.weight < record.weight)) result = record;
+        if (result.priority < record.priority || (result.priority === record.priority)) result = record;
     }
     const resultURL = new URL(result.target);
     for (const [name, value] of url.searchParams) resultURL.searchParams.append(name, value);
-    return Response.redirect(resultURL.toString(), statusCode);
+    return Response.redirect(resultURL.toString(), result.weight);
 }
 
 addEventListener("fetch", async event => {
